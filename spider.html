@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHANUSH RAJ | Multiverse Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            spidey: {
+              red: '#E23636',
+              blue: '#0047BB',
+              dark: '#0F172A',
+              yellow: '#FFDF00'
+            }
+          },
+          fontFamily: {
+            comic: ['Bangers', 'cursive'],
+            sans: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0c0b10;
+      color: #ffffff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Comic Halftone Background */
+    .halftone-bg {
+      background: radial-gradient(circle, #e2363640 10%, transparent 20%),
+        radial-gradient(circle, #e2363640 10%, transparent 20%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+
+    /* Chromatic Aberration Text */
+    .chromatic {
+      position: relative;
+      color: white;
+      text-shadow: 2px 2px 0px rgba(226, 54, 54, 0.8), -2px -2px 0px rgba(0, 255, 255, 0.8);
+      animation: shift 3s infinite alternate;
+    }
+
+    .chromatic-red {
+      text-shadow: 3px 3px 0px rgba(0, 0, 0, 1), 6px 6px 0px #E23636, -2px -2px 0px cyan;
+    }
+
+    @keyframes shift {
+      0% {
+        text-shadow: 2px 2px 0px rgba(226, 54, 54, 0.8), -2px -2px 0px rgba(0, 255, 255, 0.8);
+      }
+
+      100% {
+        text-shadow: -2px -2px 0px rgba(226, 54, 54, 0.8), 2px 2px 0px rgba(0, 255, 255, 0.8);
+      }
+    }
+
+    /* Glitch Hover Effect */
+    .glitch-hover:hover {
+      animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      color: #FFDF00;
+      text-shadow: 2px 0px #E23636, -2px 0px #0047BB;
+    }
+
+    @keyframes glitch-skew {
+      0% {
+        transform: skew(0deg);
+      }
+
+      20% {
+        transform: skew(-10deg);
+      }
+
+      40% {
+        transform: skew(10deg);
+      }
+
+      60% {
+        transform: skew(-5deg);
+      }
+
+      80% {
+        transform: skew(5deg);
+      }
+
+      100% {
+        transform: skew(0deg);
+      }
+    }
+
+    /* Comic Panels */
+    .comic-panel {
+      background: #ffffff;
+      color: #000;
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0px #000;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .comic-panel:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 12px 12px 0px #E23636;
+      border-color: #E23636;
+    }
+
+    /* Angled Sections */
+    .slanted-bottom {
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+
+    .slanted-top {
+      clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+      margin-top: -50px;
+    }
+
+    /* Custom Web Overlay */
+    .web-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 42px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 42px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    /* Decorative Sound Word */
+    .boom {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: #FFDF00;
+      color: #000;
+      font-family: 'Bangers', cursive;
+      font-size: 2rem;
+      padding: 5px 15px;
+      border: 3px solid #000;
+      transform: rotate(15deg);
+      box-shadow: 4px 4px 0px #E23636;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased text-white relative">
+
+  <!-- Fixed Web Background Overlay -->
+  <div class="fixed inset-0 web-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-spidey-dark/90 backdrop-blur-md border-b-4 border-spidey-red">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="font-comic text-4xl tracking-widest chromatic text-white">DHANUSH.R_</div>
+      <div class="hidden md:flex gap-8 font-black uppercase italic tracking-wider text-sm">
+        <a href="#about" class="glitch-hover transition-colors">Origins</a>
+        <a href="#projects" class="glitch-hover transition-colors">Missions</a>
+        <a href="#contact" class="glitch-hover transition-colors">Signal</a>
+      </div>
+      <a href="#contact"
+        class="hidden md:inline-block bg-spidey-red text-white border-2 border-black font-black uppercase italic px-6 py-2 shadow-[4px_4px_0px_white] hover:shadow-[0_0_0_white] hover:translate-x-1 hover:translate-y-1 transition-all">Join
+        Team</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-[95vh] flex items-center justify-center overflow-hidden slanted-bottom halftone-bg px-6 pt-20">
+    <div class="absolute inset-0 bg-gradient-to-t from-spidey-dark to-transparent"></div>
+    <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div
+          class="inline-block bg-spidey-yellow text-black font-black px-4 py-1 italic transform -rotate-3 mb-6 border-2 border-black shadow-[4px_4px_0px_#E23636]">
+          FRONT-END DEVELOPER
+        </div>
+        <h1 class="font-comic text-7xl md:text-9xl leading-none chromatic-red tracking-wide mb-6">
+          DHANUSH<br>RAJ
+        </h1>
+        <p class="text-xl md:text-2xl font-bold italic mb-8 max-w-lg leading-relaxed text-gray-200">
+          With great power comes great performance. Crafting agile, high-contrast digital interfaces engineered to swing
+          past the competition.
+        </p>
+        <div class="flex gap-4">
+          <a href="#projects"
+            class="bg-white text-black font-black px-8 py-4 border-4 border-black hover:bg-spidey-red hover:text-white transition-colors duration-300 transform -skew-x-12 inline-block">
+            <span class="transform skew-x-12 inline-block text-xl italic uppercase">View Missions</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Spider Graphic Area -->
+      <div class="relative flex justify-center hidden md:flex h-[500px] items-center">
+        <!-- Abstract spider motif / portal -->
+        <div class="absolute w-80 h-80 rounded-full bg-spidey-red opacity-20 blur-3xl animate-pulse"></div>
+        <div
+          class="absolute w-[400px] h-[400px] comic-panel rounded-full overflow-hidden border-8 border-spidey-blue shadow-[15px_15px_0px_#E23636]">
+          <!-- Use the dark image styled like a comic panel -->
+          <img src="/home/user/dhanush_raj/project/front end/portfolia/Untitled.jpeg"
+            class="w-full h-full object-cover grayscale mix-blend-multiply contrast-125" alt="Hero">
+          <div class="absolute inset-0 bg-spidey-red opacity-30 mix-blend-color"></div>
+        </div>
+        <div class="boom">THWIP!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div
+    class="bg-spidey-yellow text-black border-y-4 border-black font-black italic uppercase overflow-hidden whitespace-nowrap py-3 flex text-2xl slanted-top">
+    <div class="animate-[marquee_20s_linear_infinite]">
+      <span class="mx-4">&bull; REACT & NEXT.JS</span>
+      <span class="mx-4 text-spidey-red">&bull; TAILWIND CSS</span>
+      <span class="mx-4">&bull; TYPESCRIPT</span>
+      <span class="mx-4 text-spidey-blue">&bull; WebGL / THREE.JS</span>
+      <span class="mx-4">&bull; CREATIVE UI ARCITECTURE</span>
+      <span class="mx-4">&bull; REACT & NEXT.JS</span>
+      <span class="mx-4 text-spidey-red">&bull; TAILWIND CSS</span>
+      <span class="mx-4">&bull; TYPESCRIPT</span>
+      <span class="mx-4 text-spidey-blue">&bull; WebGL / THREE.JS</span>
+      <span class="mx-4">&bull; CREATIVE UI ARCITECTURE</span>
+    </div>
+  </div>
+
+  <!-- Stats / Origins section -->
+  <section id="about" class="py-24 px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-6 mb-16">
+        <h2 class="font-comic text-5xl md:text-7xl chromatic tracking-wider">THE ORIGIN STORY</h2>
+        <div class="h-2 flex-grow bg-white border-2 border-black max-w-[200px] skew-x-12"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="comic-panel p-6 text-center relative">
+          <div
+            class="absolute -top-3 -left-3 bg-spidey-red text-white p-1 border-2 border-black transform -rotate-12 font-comic">
+            RANK</div>
+          <div class="font-comic text-5xl text-spidey-blue">8.12</div>
+          <div class="font-black italic mt-2 uppercase text-sm">CGPA</div>
+        </div>
+        <div class="comic-panel p-6 text-center transform md:-translate-y-4">
+          <div
+            class="absolute -top-3 -left-3 bg-spidey-yellow text-black p-1 border-2 border-black transform rotate-12 font-comic">
+            EXP</div>
+          <div class="font-comic text-5xl text-spidey-red">1+</div>
+          <div class="font-black italic mt-2 uppercase text-sm">Internship</div>
+        </div>
+        <div class="comic-panel p-6 text-center">
+          <div
+            class="absolute -top-3 -left-3 bg-spidey-blue text-white p-1 border-2 border-black transform -rotate-6 font-comic">
+            ARSENAL</div>
+          <div class="font-comic text-5xl text-spidey-blue">5+</div>
+          <div class="font-black italic mt-2 uppercase text-sm">Core Skills</div>
+        </div>
+        <div class="comic-panel p-6 text-center transform md:translate-y-4">
+          <div class="absolute -top-3 -left-3 bg-white text-black p-1 border-2 border-black font-comic">SHIELD</div>
+          <div class="font-comic text-5xl text-spidey-red">100%</div>
+          <div class="font-black italic mt-2 uppercase text-sm">Code Coverage</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects / Missions -->
+  <section id="projects"
+    class="bg-white text-black py-24 px-6 border-y-4 border-black slanted-top halftone-bg relative">
+    <!-- Web Pattern in background -->
+    <div style="background-image: radial-gradient(#E23636 2px, transparent 2px); background-size: 20px 20px;"
+      class="absolute inset-0 opacity-10"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <h2 class="font-comic text-6xl md:text-8xl text-spidey-dark mb-4 text-center"
+        style="text-shadow: 4px 4px 0px #E23636;">MISSION LOGS</h2>
+      <p class="text-center font-bold italic mb-16 max-w-2xl mx-auto text-xl uppercase">Documented deployments across
+        the multiverse of web architecture.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- Mission 1 -->
+        <div class="comic-panel overflow-hidden group">
+          <div class="h-64 border-b-4 border-black overflow-hidden relative">
+            <div
+              class="absolute top-2 right-2 bg-spidey-yellow text-black font-black uppercase text-xs px-2 py-1 border-2 border-black z-10 transform rotate-3">
+              #001</div>
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuATefD_hmbSc5Dvb_ZGZfwn2361II-f2PDr-r8TF_DGYSaUHE_a2L4Dl2q1DJnLaUVbL_x7FjkajMsuFgyPRI1eAMhOapSfr4qlLKLtG6PcQBNvCDqfoDQCFM8iYjXB5WVeSc9JKWvABPxqnCCsGoZknfv_udYOnJltsLYmZCfm8Lg5Hs2-5E6Wma2TrJoxm7mso2l0HvWdsOEn419OF_CuuZF0ST5hCGwsfcAhilxl0guZI7C65GmJ9-uBFHqYIawDtt-ODpjK58E"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+              alt="Magic Bus">
+          </div>
+          <div class="p-6 relative">
+            <div class="boom"
+              style="right: auto; left: -10px; top: -30px; font-size: 1.5rem; background: #E23636; color: white;">CRASH!
+            </div>
+            <h3 class="font-comic text-3xl mb-2 text-spidey-blue">MAGIC BUS INTERNSHIP</h3>
+            <div class="flex gap-2 mb-4 font-black text-xs uppercase italic">
+              <span class="bg-black text-white px-2 py-1">HTML</span>
+              <span class="bg-black text-white px-2 py-1">CSS</span>
+              <span class="bg-black text-white px-2 py-1">JS</span>
+            </div>
+            <p class="font-bold">Developed responsive web pages using core front-end languages. Focused on form
+              validation and crucial UI components.</p>
+          </div>
+        </div>
+
+        <!-- Mission 2 -->
+        <div class="comic-panel overflow-hidden group transform md:translate-y-12">
+          <div class="h-64 border-b-4 border-black overflow-hidden relative">
+            <div
+              class="absolute top-2 right-2 bg-spidey-yellow text-black font-black uppercase text-xs px-2 py-1 border-2 border-black z-10 transform -rotate-3">
+              #002</div>
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd0dbLIOcgIrpRc0e8Iulkoc6LG4drjk-YUTUb75tioAbI0e_PhFcaChbpTNGFapAemcpd0pH9ggLvMZfbbGWYEoLLNIhZfbVbau32xupalhPqM3nGIdaQng1O0Re2LktXM4S4qB5dOgnvZCDmBq_Yb8zkdB_ImPm7Mek4RYse5z6CTszRrkJsPFV6xhPQVD4cFVYRQr78mBbCzNT3rWOOlJ38vAhULwlLVQneNjLz_xGHm2rlw1WbOIjJonkcptmlo_0kKoPh5r8"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+              alt="Academic">
+          </div>
+          <div class="p-6">
+            <h3 class="font-comic text-3xl mb-2 text-spidey-red">ACADEMIC EXPLORATIONS</h3>
+            <div class="flex gap-2 mb-4 font-black text-xs uppercase italic">
+              <span class="bg-black text-white px-2 py-1">PYTHON</span>
+              <span class="bg-black text-white px-2 py-1">PHP</span>
+              <span class="bg-black text-white px-2 py-1">SQL</span>
+            </div>
+            <p class="font-bold">Loyola College B.Sc. projects heavily utilizing Python, PHP, and SQL bridging frontend
+              styling with backend data.</p>
+          </div>
+        </div>
+
+        <!-- Mission 3 -->
+        <div class="comic-panel overflow-hidden group">
+          <div class="h-64 border-b-4 border-black overflow-hidden relative bg-gray-200">
+            <div
+              class="absolute top-2 right-2 bg-spidey-yellow text-black font-black uppercase text-xs px-2 py-1 border-2 border-black z-10 transform mt-2">
+              #003</div>
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2369a_SL8nt6LZT0z4yREpDW_GIuN7QbLP6Izi23HBtpxezldY3ysE0_9HDzjbM2NzF-s0DYpSatX7gC0-XtYzXcp7ncyOaW6yHdh2mi8VqtqsEoRYRfBM2_ElsAHNUi6ToK643BDe0ApM1jn2BhQE84is5HNewsdyC2NRBQLxesjWdEjcs76exRHg9mA2yyRJxsmNd_QLSwQZJ6b64cc1mioFdm68Vc1T9by4BkLQpaXKMKP0M63ZqFtOGcP7PMMXAw36NZuuHw"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 mix-blend-multiply"
+              alt="Core Systems">
+          </div>
+          <div class="p-6">
+            <h3 class="font-comic text-3xl mb-2 text-spidey-blue">CORE SYSTEMS</h3>
+            <div class="flex gap-2 mb-4 font-black text-xs uppercase italic">
+              <span class="bg-black text-white px-2 py-1">OOP</span>
+              <span class="bg-black text-white px-2 py-1">MySQL</span>
+            </div>
+            <p class="font-bold">Fundamental object-oriented architecture and database structuring utilizing robust
+              MySQL servers.</p>
+          </div>
+        </div>
+
+        <!-- Mission 4 -->
+        <div class="comic-panel overflow-hidden group transform md:translate-y-12">
+          <div class="h-64 border-b-4 border-black overflow-hidden relative bg-gray-200">
+            <div
+              class="absolute top-2 right-2 bg-spidey-yellow text-black font-black uppercase text-xs px-2 py-1 border-2 border-black z-10 transform rotate-12">
+              #004</div>
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-t8F3oqQjk-4BXlVf2i8nXk7uuHHA5Pe95myY1vbqdncqeEp3u-qqr7mmj_K638e8NHZgeTp3jrXKL2HSbjbAkBkEoxuJ0h3ai3lJg1ooG04MCprUO5SzV_RelC3_YPXm70kQRdMVxYACbC9Joh45GirIVfMDcC_bSkd8n3NFiCCmWz0Ko1Ibdwt31kzmWJr4Gpb2Zigg1jzu8NgQDjNq_0WA3iNk2fW0lM8KcW2hbWjPNbaSFo3kr2wh7fqC-BrNbbTZmyG4tu4"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+              alt="Speaking">
+          </div>
+          <div class="p-6">
+            <h3 class="font-comic text-3xl mb-2 text-spidey-red">PUBLIC SPEAKING & MC</h3>
+            <div class="flex gap-2 mb-4 font-black text-xs uppercase italic">
+              <span class="bg-black text-white px-2 py-1">MC</span>
+              <span class="bg-black text-white px-2 py-1">Loyola College</span>
+            </div>
+            <p class="font-bold">Master of Ceremony leading academic and technical events for large audiences.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-32 px-6 bg-spidey-blue text-white slanted-top border-t-8 border-spidey-red relative">
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div
+        class="bg-white text-black p-8 md:p-12 border-8 border-black shadow-[15px_15px_0px_#E23636] transform -rotate-1 relative">
+        <form class="space-y-6" id="spider-form">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block font-black uppercase italic mb-2">Civilian Name</label>
+              <input type="text" id="form-name" class="w-full border-4 border-black p-4 font-bold focus:outline-none"
+                placeholder="Peter Parker" required>
+            </div>
+            <div>
+              <label class="block font-black uppercase italic mb-2">Comm Freq (Email)</label>
+              <input type="email" id="form-email" class="w-full border-4 border-black p-4 font-bold focus:outline-none"
+                placeholder="pparker@dailybugle.com" required>
+            </div>
+          </div>
+          <div>
+            <label class="block font-black uppercase italic mb-2">Mission Directive</label>
+            <select id="form-subject" class="w-full border-4 border-black p-4 font-bold focus:outline-none" required>
+              <option value="">-- SELECT CLASSIFICATION --</option>
+              <option>Project Inquiry</option>
+              <option>Tech Consultancy</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-black uppercase italic mb-2">Briefing Details</label>
+            <textarea id="form-message" rows="4" class="w-full border-4 border-black p-4 font-bold focus:outline-none"
+              placeholder="Explain the situation..." required></textarea>
+          </div>
+          <button type="submit" id="spider-btn"
+            class="w-full bg-spidey-red text-white font-comic text-3xl py-4 border-4 border-black transition-all">
+            LAUNCH WEB-SHOOTER
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIREBASE SCRIPTS -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD14H-h_9sT_iUSx9vV1JKyqem4UU8riUs",
+      authDomain: "database-f8f2d.firebaseapp.com",
+      projectId: "database-f8f2d",
+      storageBucket: "database-f8f2d.firebasestorage.app",
+      messagingSenderId: "181829118604",
+      appId: "1:181829118604:web:e837b9f2529735746d29a9"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const form = document.getElementById('spider-form');
+    const btn = document.getElementById('spider-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Animation start
+      const originalText = btn.innerText;
+      btn.innerText = 'THWIP! SENDING...';
+      btn.classList.replace('bg-spidey-red', 'bg-spidey-blue');
+
+      try {
+        await db.collection("spiderman").add({
+          name: document.getElementById('form-name').value,
+          email: document.getElementById('form-email').value,
+          subject: document.getElementById('form-subject').value,
+          message: document.getElementById('form-message').value,
+          submittedAt: new Date().toISOString()
+        });
+
+        // Animation Success
+        btn.innerText = 'SIGNAL DELIVERED!';
+        btn.classList.replace('bg-spidey-blue', 'bg-green-500');
+        form.reset();
+      } catch (error) {
+        alert("Error sending signal!");
+        btn.innerText = originalText;
+        btn.classList.replace('bg-spidey-blue', 'bg-spidey-red');
+      }
+
+      // Reset button after delay
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.classList.replace('bg-green-500', 'bg-spidey-red');
+      }, 3000);
+    });
+  </script>
+  <footer class="bg-black py-12 border-t-8 border-spidey-yellow text-center text-white relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="font-comic text-4xl mb-6 text-spidey-red tracking-widest">DHANUSH.RAJ</div>
+
+      <div class="flex justify-center gap-8 font-black uppercase italic mb-8 text-sm md:text-base">
+        <a href="#" class="glitch-hover transition-colors">Github</a>
+        <a href="#" class="glitch-hover transition-colors">LinkedIn</a>
+        <a href="#" class="glitch-hover transition-colors">Twitter</a>
+      </div>
+
+      <div class="h-px w-24 bg-gray-800 mx-auto mb-8"></div>
+
+      <p class="font-black italic text-gray-500 text-sm tracking-wide">
+        &copy; 2026 DHANUSH RAJ. IN ANOTHER UNIVERSE, I MIGHT NOT HAVE WRITTEN THIS FOOTER.
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
